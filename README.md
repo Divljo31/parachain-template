@@ -1,133 +1,143 @@
 <div align="center">
 
-# Polkadot SDK's Parachain Template
+# 🚀 Polkadot SDK Parachain Template
 
 <img height="70px" alt="Polkadot SDK Logo" src="https://github.com/paritytech/polkadot-sdk/raw/master/docs/images/Polkadot_Logo_Horizontal_Pink_White.png#gh-dark-mode-only"/>
 <img height="70px" alt="Polkadot SDK Logo" src="https://github.com/paritytech/polkadot-sdk/raw/master/docs/images/Polkadot_Logo_Horizontal_Pink_Black.png#gh-light-mode-only"/>
 
-> This is a template for creating a [parachain](https://wiki.polkadot.network/docs/learn-parachains) based on Polkadot SDK.
+> A ready-to-use template for creating [parachains](https://wiki.polkadot.network/docs/learn-parachains) based on Polkadot SDK.
 >
-> This template is automatically updated after releases in the main [Polkadot SDK monorepo](https://github.com/paritytech/polkadot-sdk).
+> **Quick Start**: Clone, run `./start.sh`, and connect to your local parachain! 🎯
 
 </div>
 
-## Table of Contents
+</div>
 
-- [Intro](#intro)
+## 🎯 Quick Start
 
+```bash
+# Clone the repository
+git clone <your-repo-url>
+cd parachain-template
+
+# Start your parachain with one command
+./start.sh
+```
+
+Then connect to your parachain at: **https://polkadot.js.org/apps/#/explorer?rpc=ws://localhost:9944**
+
+---
+
+## 📋 Table of Contents
+
+- [Quick Start](#-quick-start)
+- [Prerequisites](#prerequisites)
 - [Template Structure](#template-structure)
-
 - [Getting Started](#getting-started)
-
 - [Starting a Development Chain](#starting-a-development-chain)
-
-  - [Omni Node](#omni-node-prerequisites)
-  - [Zombienet setup with Omni Node](#zombienet-setup-with-omni-node)
-  - [Parachain Template Node](#parachain-template-node)
-  - [Connect with the Polkadot-JS Apps Front-End](#connect-with-the-polkadot-js-apps-front-end)
-  - [Takeaways](#takeaways)
-
-- [Runtime development](#runtime-development)
+  - [One-Line Startup](#one-line-startup)
+  - [Manual Setup](#manual-setup)
+  - [Connect with Polkadot.js Apps](#connect-with-polkadotjs-apps)
+- [Runtime Development](#runtime-development)
 - [Contributing](#contributing)
 - [Getting Help](#getting-help)
 
-## Intro
+## 📋 Prerequisites
 
-- ⏫ This template provides a starting point to build a [parachain](https://wiki.polkadot.network/docs/learn-parachains).
+Before you start, make sure you have the following installed:
 
-- ☁️ It is based on the
-  [Cumulus](https://paritytech.github.io/polkadot-sdk/master/polkadot_sdk_docs/polkadot_sdk/cumulus/index.html) framework.
+- **Rust**: [Install Rust](https://www.rust-lang.org/tools/install)
+- **polkadot-omni-node**: `cargo install --locked polkadot-omni-node@0.5.0`
+- **chain-spec-builder**: `cargo install --locked chain-spec-builder@10.0.0`
 
-- 🔧 Its runtime is configured with a single custom pallet as a starting point, and a handful of ready-made pallets
-  such as a [Balances pallet](https://paritytech.github.io/polkadot-sdk/master/pallet_balances/index.html).
+## 🏗️ Template Structure
 
+This parachain template includes:
+
+- ⏫ **Runtime** - Core logic of the parachain
+- ☁️ **Cumulus Framework** - For parachain functionality
+- 🔧 **Custom Pallets** - Starting point for your custom logic
+- 💿 **Node** - Binary application (optional, uses Omni Node by default)
+- 🚀 **One-Line Startup** - Simple `./start.sh` script
+
+## 🎯 Intro
+
+- ⏫ This template provides a starting point to build a [parachain](https://wiki.polkadot.network/docs/learn-parachains)
+- ☁️ It is based on the [Cumulus](https://paritytech.github.io/polkadot-sdk/master/polkadot_sdk_docs/polkadot_sdk/cumulus/index.html) framework
+- 🔧 Its runtime is configured with a single custom pallet as a starting point, and ready-made pallets like [Balances](https://paritytech.github.io/polkadot-sdk/master/pallet_balances/index.html)
 - 👉 Learn more about parachains [here](https://wiki.polkadot.network/docs/learn-parachains)
 
-## Template Structure
+## 📁 Template Structure
 
 A Polkadot SDK based project such as this one consists of:
 
-- 🧮 the [Runtime](./runtime/README.md) - the core logic of the parachain.
-- 🎨 the [Pallets](./pallets/README.md) - from which the runtime is constructed.
-- 💿 a [Node](./node/README.md) - the binary application, not part of the project default-members list and not compiled unless
-  building the project with `--workspace` flag, which builds all workspace members, and is an alternative to
-  [Omni Node](https://paritytech.github.io/polkadot-sdk/master/polkadot_sdk_docs/reference_docs/omni_node/index.html).
+- 🧮 **[Runtime](./runtime/README.md)** - The core logic of the parachain
+- 🎨 **[Pallets](./pallets/README.md)** - From which the runtime is constructed
+- 💿 **[Node](./node/README.md)** - The binary application (optional, uses Omni Node by default)
+- 🚀 **[Scripts](./scripts/)** - Helper scripts including the one-line startup
 
-## Getting Started
+## 🚀 Getting Started
 
-- 🦀 The template is using the Rust language.
+### Prerequisites
 
-- 👉 Check the
-  [Rust installation instructions](https://www.rust-lang.org/tools/install) for your system.
+- 🦀 **Rust**: Check the [Rust installation instructions](https://www.rust-lang.org/tools/install) for your system
+- 🛠️ **Dependencies**: Install required tools:
+  ```bash
+  cargo install --locked polkadot-omni-node@0.5.0
+  cargo install --locked chain-spec-builder@10.0.0
+  ```
 
-- 🛠️ Depending on your operating system and Rust version, there might be additional
-  packages required to compile this template - please take note of the Rust compiler output.
+### Clone the Repository
 
-Fetch parachain template code:
-
-```sh
-git clone https://github.com/paritytech/polkadot-sdk-parachain-template.git parachain-template
-
+```bash
+git clone <your-repo-url> parachain-template
 cd parachain-template
 ```
 
-## Starting a Development Chain
+## 🏃‍♂️ Starting a Development Chain
 
-The parachain template relies on a hardcoded parachain id which is defined in the runtime code
-and referenced throughout the contents of this file as `{{PARACHAIN_ID}}`. Please replace
-any command or file referencing this placeholder with the value of the `PARACHAIN_ID` constant:
+### 🚀 One-Line Startup (Recommended)
+
+The easiest way to start your parachain:
+
+```bash
+./start.sh
+```
+
+This script will:
+1. ✅ Check if runtime is built (builds if needed)
+2. ✅ Generate chain specification (if missing)
+3. ✅ Start the parachain node
+4. ✅ Show connection info for Polkadot.js Apps
+
+**Connect to your parachain**: https://polkadot.js.org/apps/#/explorer?rpc=ws://localhost:9944
+
+### 📋 Manual Setup
+
+The parachain template uses a hardcoded parachain ID defined in the runtime code:
 
 ```rust,ignore
 pub const PARACHAIN_ID: u32 = 1000;
 ```
 
-### Omni Node Prerequisites
+#### Build and Run Manually
 
-[Omni Node](https://paritytech.github.io/polkadot-sdk/master/polkadot_sdk_docs/reference_docs/omni_node/index.html) can
-be used to run the parachain template's runtime. `polkadot-omni-node` binary crate usage is described at a high-level
-[on crates.io](https://crates.io/crates/polkadot-omni-node).
+If you prefer to run the steps manually:
 
-#### Install `polkadot-omni-node`
+1. **Build the runtime**:
+   ```bash
+   cargo build --release --locked
+   ```
 
-Please see the installation section at [`crates.io/omni-node`](https://crates.io/crates/polkadot-omni-node).
+2. **Generate chain specification**:
+   ```bash
+   chain-spec-builder create -t development --relay-chain paseo --para-id 1000 --runtime ./target/release/wbuild/parachain-template-runtime/parachain_template_runtime.compact.compressed.wasm named-preset development
+   ```
 
-#### Build `parachain-template-runtime`
-
-```sh
-cargo build --profile production
-```
-
-#### Install `staging-chain-spec-builder`
-
-Please see the installation section at [`crates.io/staging-chain-spec-builder`](https://crates.io/crates/staging-chain-spec-builder).
-
-#### Use `chain-spec-builder` to generate the `chain_spec.json` file
-
-```sh
-chain-spec-builder create --relay-chain "rococo-local" --para-id {{PARACHAIN_ID}} --runtime \
-    target/release/wbuild/parachain-template-runtime/parachain_template_runtime.wasm named-preset development
-```
-
-**Note**: the `relay-chain` and `para-id` flags are mandatory information required by
-Omni Node, and for parachain template case the value for `para-id` must be set to `{{PARACHAIN_ID}}`, since this
-is also the value injected through [ParachainInfo](https://docs.rs/staging-parachain-info/0.17.0/staging_parachain_info/)
-pallet into the `parachain-template-runtime`'s storage. The `relay-chain` value is set in accordance
-with the relay chain ID where this instantiation of parachain-template will connect to.
-
-#### Run Omni Node
-
-Start Omni Node with the generated chain spec. We'll start it in development mode (without a relay chain config), producing
-and finalizing blocks based on manual seal, configured below to seal a block with each second.
-
-```bash
-polkadot-omni-node --chain <path/to/chain_spec.json> --dev --dev-block-time 1000
-```
-
-However, such a setup is not close to what would run in production, and for that we need to setup a local
-relay chain network that will help with the block finalization. In this guide we'll setup a local relay chain
-as well. We'll not do it manually, by starting one node at a time, but we'll use [zombienet](https://paritytech.github.io/zombienet/intro.html).
-
-Follow through the next section for more details on how to do it.
+3. **Start the node**:
+   ```bash
+   polkadot-omni-node --chain ./chain_spec.json --dev
+   ```
 
 ### Zombienet setup with Omni Node
 
@@ -189,18 +199,29 @@ We're left just with starting the network:
 zombienet --provider native spawn zombienet.toml
 ```
 
-### Connect with the Polkadot-JS Apps Front-End
+### 🌐 Connect with Polkadot.js Apps
 
-- 🌐 You can interact with your local node using the
-  hosted version of the Polkadot/Substrate Portal:
-  [relay chain](https://polkadot.js.org/apps/#/explorer?rpc=ws://localhost:9944)
-  and [parachain](https://polkadot.js.org/apps/#/explorer?rpc=ws://localhost:9988).
+Once your parachain is running, you can interact with it using Polkadot.js Apps:
 
-- 🪐 A hosted version is also
-  available on [IPFS](https://dotapps.io/).
+#### Quick Connect
+Click this link to connect directly: **https://polkadot.js.org/apps/#/explorer?rpc=ws://localhost:9944**
 
-- 🧑‍🔧 You can also find the source code and instructions for hosting your own instance in the
-  [`polkadot-js/apps`](https://github.com/polkadot-js/apps) repository.
+#### Manual Connection
+1. Go to [polkadot.js.org/apps](https://polkadot.js.org/apps)
+2. Click the network icon (top left corner)
+3. Scroll to "Development" section
+4. Select "Custom"
+5. Enter: `ws://localhost:9944`
+6. Click "Switch"
+
+#### What You'll See
+- **Chain name**: "parachain-template-runtime" in the top left
+- **Block explorer**: Real-time block production
+- **All parachain functionality**: Available through the UI
+
+#### Alternative Hosts
+- 🌐 **IPFS version**: [dotapps.io](https://dotapps.io/)
+- 🧑‍🔧 **Self-hosted**: [polkadot-js/apps](https://github.com/polkadot-js/apps)
 
 ### Takeaways
 

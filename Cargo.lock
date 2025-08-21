@@ -9263,6 +9263,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "pallet-relayer-registry"
+version = "0.1.0"
+dependencies = [
+ "parity-scale-codec",
+ "polkadot-sdk-frame",
+ "scale-info",
+ "serde",
+]
+
+[[package]]
 name = "pallet-remark"
 version = "40.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -10015,6 +10025,7 @@ dependencies = [
  "hex-literal",
  "log",
  "pallet-parachain-template",
+ "pallet-relayer-registry",
  "parity-scale-codec",
  "polkadot-sdk 2503.0.1",
  "scale-info",

@@ -1,27 +1,33 @@
 #!/bin/bash
-# One-line parachain starter
+# Parachain Template Starter - Tutorial Version
 # Usage: ./start.sh
 
 set -e
 
-echo " Starting Parachain Template..."
+echo "🚀 Starting Parachain Template..."
 
-# Check if runtime is built
+# Step 1: Compile the runtime (if not already built)
 if [ ! -f "target/release/wbuild/parachain-template-runtime/parachain_template_runtime.compact.compressed.wasm" ]; then
-    echo "🔨 Building runtime..."
+    echo "🔨 Compiling the runtime..."
     cargo build --release --locked
 fi
 
-# Check if chain_spec.json exists, if not generate it
+# Step 2: Generate the chain specification file (if not exists)
 if [ ! -f "chain_spec.json" ]; then
-    echo "📋 Generating chain specification..."
-    chain-spec-builder create -t development --relay-chain rococo-local --para-id 1000 --runtime ./target/release/wbuild/parachain-template-runtime/parachain_template_runtime.compact.compressed.wasm named-preset development
+    echo "📋 Generating chain specification file..."
+    chain-spec-builder create -t development \
+        --relay-chain paseo \
+        --para-id 1000 \
+        --runtime ./target/release/wbuild/parachain-template-runtime/parachain_template_runtime.compact.compressed.wasm \
+        named-preset development
 fi
 
-echo " Starting parachain node..."
-echo "📡 RPC: ws://localhost:9944"
-echo " Polkadot.js: https://polkadot.js.org/apps/#/explorer?rpc=ws://localhost:9944"
-echo "⏹️  Press Ctrl+C to stop"
+# Step 3: Start the local chain
+echo "🌟 Starting the local chain..."
+echo "📡 Node accessible at: ws://localhost:9944"
+echo "🌐 Polkadot.js Apps: https://polkadot.js.org/apps/#/explorer?rpc=ws://localhost:9944"
+echo "⏹️  Press Ctrl+C to stop the node"
 echo ""
 
-polkadot-omni-node --chain ./chain_spec.json --dev
+# Start the omni node with CORS enabled for browser connections
+polkadot-omni-node --chain ./chain_spec.json --dev --rpc-cors all

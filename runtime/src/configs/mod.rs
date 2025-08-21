@@ -321,3 +321,14 @@ impl pallet_parachain_template::Config for Runtime {
 	type RuntimeEvent = RuntimeEvent;
 	type WeightInfo = pallet_parachain_template::weights::SubstrateWeight<Runtime>;
 }
+
+/// Configure the relayer registry pallet.
+impl pallet_relayer_registry::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+	type MaxSupportedChains = ConstU32<100>;
+	type MaxMetadataLength = ConstU32<1024>;
+	type MaxRelayers = ConstU32<1000>;
+	type WeightInfo = pallet_relayer_registry::weights::SubstrateWeight<Runtime>;
+}
+
+

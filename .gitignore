@@ -1,6 +1,68 @@
+# Rust/Cargo build artifacts
 target/
+Cargo.lock
+**/target/
+
+# Substrate/Polkadot specific
 chain_spec.json
 dev_chain_spec.json
 *.db/
 *.log
+*.rocksdb/
+*.paritydb/
+
+# Node.js dependencies (for any JS/TS tooling)
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Build and temporary files
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+*.patch
+
+# Logs
+*.log
+logs/
+
+# Runtime environment
+.env
+.env.local
+.env.*.local
+
+# Coverage and test artifacts
+coverage/
+*.coverage
+.nyc_output/
+
+# Documentation build
+docs/_build/
+site/
+
+# Wasm build artifacts
+*.wasm
+wasm-pack.log
+
+# Benchmarking results
+*.bench
+
+# Zombienet artifacts
+zombie-*
+*.zombie

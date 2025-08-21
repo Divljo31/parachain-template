@@ -313,6 +313,10 @@ mod runtime {
 	// Template
 	#[runtime::pallet_index(50)]
 	pub type TemplatePallet = pallet_parachain_template;
+
+	// Relayer Registry
+	#[runtime::pallet_index(51)]
+	pub type RelayerRegistry = pallet_relayer_registry;
 }
 
 #[docify::export(register_validate_block)]
